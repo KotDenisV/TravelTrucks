@@ -1,27 +1,29 @@
-import { useEffect } from 'react'
-import s from './App.module.css'
-import ContactForm from '../ContactForm/ContactForm'
-import SearchBox from '../SearchBox/SearchBox'
-import ContactList from '../ContactList/ContactList'
-import { selectError, selectLoading } from '../../redux/selectors';
-import { fetchContactsThunk } from '../../redux/contactsOps';
-import { useDispatch, useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import MovieReviews from './components/MovieReviews/MovieReviews';
+import MovieCast from './components/MovieCast/MovieCast';
+import Navigation from './components/Navigation/Navigation';
+import { lazy, Suspense } from 'react';
+
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage'));
+const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage/MovieDetailsPage'));
 
 function App() {
-  const loading = useSelector(selectLoading);
-  const isError = useSelector(selectError);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchContactsThunk());
-  }, [dispatch]);
   return (
-    <div className={s.appWrapper}>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading && <h1>Loading...</h1>}      
-      <ContactList />
-      {isError && <h2>Something went wrong!</h2>}
+    <div>
+      <Navigation />
+      <Suspense fallback={<h2>LOADING YOUR COMPONENT!</h2>}>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/movies' element={<MoviesPage />} />
+          <Route path='/movies/:movieId' element={<MovieDetailsPage />} >
+            <Route path='cast' element={<MovieCast />} />
+            <Route path='reviews' element={<MovieReviews />} />
+          </Route>
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
