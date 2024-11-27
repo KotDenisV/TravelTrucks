@@ -5,7 +5,7 @@ import Loader from "../../components/Loader/Loader";
 import s from './MovieDetailsPage.module.css';
 import clsx from 'clsx';
 
-const MovieDetailsPage = () => {
+const CamperDetailsPage = () => {
     const [movie, setMovie] = useState({});
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState(false);
@@ -68,7 +68,7 @@ return clsx(s.link, isActive && s.active);
                 </div>    
             </div>
             <div className={s.wrapperNav}>
-                <NavLink className={buildLinkClass} to='cast'>
+                <NavLink className={buildLinkClass} to='features'>
                     MovieCast
                 </NavLink>
                 <NavLink className={buildLinkClass} to='reviews'>
@@ -80,4 +80,4 @@ return clsx(s.link, isActive && s.active);
     );
 };
 
-export default MovieDetailsPage;
+export default CamperDetailsPage;

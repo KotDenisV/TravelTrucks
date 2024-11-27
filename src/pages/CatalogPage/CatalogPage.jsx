@@ -7,7 +7,7 @@ import MovieList from '../../components/MovieList/MovieList';
 import { Toaster } from 'react-hot-toast';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-const MoviesPage = () => {
+const CatalogPage = () => {
     // const [query, setQuery] = useState('');
     const [movie, setMovie] = useState([]);
     const [loader, setLoader] = useState(false);
@@ -54,4 +54,4 @@ const MoviesPage = () => {
     );
 };
 
-export default MoviesPage;
+export default CatalogPage;

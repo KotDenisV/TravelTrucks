@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MovieReviews from './components/MovieReviews/MovieReviews';
-import MovieCast from './components/MovieCast/MovieCast';
+import CamperFeatures from './components/CamperFeatures/CamperFeatures';
 import Navigation from './components/Navigation/Navigation';
 import { lazy, Suspense } from 'react';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
-const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage'));
-const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage/MovieDetailsPage'));
+const Catalog = lazy(() => import('./pages/CatalogPage/MoviesPage'));
+const CamperDetailsPage = lazy(() => import('./pages/MovieDetailsPage/CamperDetailsPage'));
 
 function App() {
   return (
@@ -16,10 +16,10 @@ function App() {
       <Suspense fallback={<h2>LOADING YOUR COMPONENT!</h2>}>
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/movies' element={<MoviesPage />} />
-          <Route path='/movies/:movieId' element={<MovieDetailsPage />} >
-            <Route path='cast' element={<MovieCast />} />
-            <Route path='reviews' element={<MovieReviews />} />
+          <Route path='/catalog' element={<Catalog />} />
+          <Route path='catalog/:id' element={<CamperDetailsPage />} >
+            <Route path='features' element={<CamperFeatures />} />
+            <Route path='reviews' element={<CamperReviews />} />
           </Route>
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
