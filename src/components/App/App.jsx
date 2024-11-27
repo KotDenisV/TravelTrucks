@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import MovieReviews from './components/MovieReviews/MovieReviews';
+import CamperReviews from './components/CamperReviews/CamperReviews';
 import CamperFeatures from './components/CamperFeatures/CamperFeatures';
 import Navigation from './components/Navigation/Navigation';
 import { lazy, Suspense } from 'react';

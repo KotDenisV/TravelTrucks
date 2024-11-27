@@ -4,7 +4,7 @@ import { getReviewsById } from "../../api";
 import Loader from "../Loader/Loader";
 import s from './MovieReviews.module.css';
 
-const MovieReviews = () => {
+const CamperReviews = () => {
    const [reviews, setReviews] = useState([]);
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState(null);
@@ -54,4 +54,4 @@ const MovieReviews = () => {
     );
 };
 
-export default MovieReviews;
+export default CamperReviews;
